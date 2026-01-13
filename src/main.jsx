@@ -7,8 +7,8 @@ import "./index.css";
 
 import Register from "@/pages/auth/register";
 import Login from "@/pages/auth/login";
-import Home from "@/pages/Home/index";
-import Landing from "@/pages";
+import Home from "@/pages/Home";
+import Landing from "@/pages/index";
 import NoAuthRoute from "@/router/NoAuthRoute";
 import NoGuestRoute from "@/router/NoGuestRoute";
 
