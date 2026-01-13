@@ -5,7 +5,7 @@ import HeaderSection from "@/components/fragments/HeaderSection";
 import FeatureGrid from "@/components/fragments/FeatureGrid";
 import LandSection from "@/components/fragments/LandSection";
 import SalesSection from "@/components/fragments/SalesSection";
-import BottomSection from "@/components/fragments/BottomSection";
+import BottomSection from "@/components/fragments/bottomsecti";
 
 
 export default function Home(){
@@ -19,7 +19,6 @@ export default function Home(){
 
  <main className="min-h-screen bg-white font-helvetica selection:bg-green-100">
       <div className="max-w-5xl mx-auto w-full">
-        {/* Urutan Section sesuai Gambar */}
         <HeaderSection />
         <FeatureGrid />
         <LandSection />
