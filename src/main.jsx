@@ -1,12 +1,14 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
+
 
 import Register from "@/pages/auth/register";
 import Login from "@/pages/auth/login";
 import Home from "@/pages/Home";
-
+import Landing from "@/pages";
 import NoAuthRoute from "@/router/NoAuthRoute";
 import NoGuestRoute from "@/router/NoGuestRoute";
 
@@ -17,9 +19,8 @@ const Root = () => {
     <BrowserRouter>
       <Routes>
 
-        {/* GUEST */}
         <Route element={<NoAuthRoute />}>
-          <Route path="/landing" element={<App />} />
+          <Route path="/landing" element={<Landing />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
         </Route>
