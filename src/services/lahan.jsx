@@ -1,41 +1,41 @@
-import React, { useState, useEffect } from "react";
-import { fetchLahan } from "@/lib/fetchLahan";
-import LandCard from "@/components/LandCard";
+import {api} from "@/lib/api"
 
-const LahanList = () => {
-  const [lahanList, setLahanList] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const lahanData = await fetchLahan(); 
-        console.log("Lahan data fetched:", lahanData);
-      } catch (err) {
-        console.error("Error fetching lahan data:", err);
-      }
-    };
-
-    getData();
-  }, []);
-
-  return (
-    <div className="flex gap-4 overflow-x-auto">
-      {lahanList.map((item) => (
-        <LandCard
-          key={item.id}
-          image={item.image}
-          title={item.title}
-          subtitle={item.subtitle}
-          meta={{
-            tanaman: item.tanaman,
-            hektar: item.hektar,
-            tanah: item.tanah,
-            createdAt: item.createdAt,
-          }}
-        />
-      ))}
-    </div>
-  );
+export const fetchLahan = async () => {
+  try {
+    const res = await api.get("/lahan");
+    return res.data;
+  } catch (err) {
+    console.error("Fetch lahan error:", err);
+    throw err; 
+  }
 };
 
-export default LahanList;
+export const storeLahan = async (data) => {
+  try {
+    const res = await api.post("/lahan", data);
+    return res.data;
+  } catch (err) {
+    console.error("Store Lahan error:", err);
+    throw err;
+  }
+};
+
+export const updateLahan = async (id, data) => {
+  try {
+    const res = await api.put(`/lahan/${id}`, data);
+    return res.data;
+  } catch (err) {
+    console.error("Update Lahan error:", err);
+    throw err;
+  }
+};
+
+export const deleteLahan = async (id) => {
+  try {
+    const res = await api.delete(`/lahan/${id}`);
+    return res.data;
+  } catch (err) {
+    console.error("Delete Lahan error:", err);
+    throw err;
+  }
+};

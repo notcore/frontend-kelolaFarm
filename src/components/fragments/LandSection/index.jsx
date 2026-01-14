@@ -56,3 +56,4 @@ const LandSection = () => {
 };
 
 export default LandSection;
+
