@@ -4,8 +4,8 @@ import Footer from "@/components/fragments/Footer";
 
 export default function Layout({paddingCondition=true, children }) {
   return (
-    <div>
-      <div className="w-full fixed top-0 z-50 max-w-screen border-b h-12">
+    <div className="grid min-h-screen">
+      <div className="w-full fixed top-0 z-50 border-b h-12">
         <div className="">
           <Navbar/>
         </div>

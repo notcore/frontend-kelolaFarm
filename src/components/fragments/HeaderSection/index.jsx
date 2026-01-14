@@ -32,7 +32,7 @@ const HeaderSection = () => {
           
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center border-2 border-gray-200">
-              <User />
+              <User className='text-green-600'/>
             </div>
 
             <Typo Variant="h2" ClassName="text-base md:text-lg leading-none">

@@ -4,7 +4,7 @@ import * as Atoms from "@/components/atoms";
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white px-6 md:px-12 py-10">
+    <footer className="bg-black  text-white px-6 md:px-12 py-10">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-8">
         <div className="flex flex-col gap-2">
           <Atoms.Typo Variant={"h1"}>KelolaFarm Project</Atoms.Typo>
