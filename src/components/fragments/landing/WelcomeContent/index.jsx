@@ -5,7 +5,6 @@ import { CloudRain, Sprout, ArrowUpRight } from "lucide-react";
 
 const WelcomeContent = () => {
   return (
-    // WelcomeContent
     <div className="grid grid-cols-1 my-10 lg:mx-10 mx-5">
       <Atoms.Typo className="mb-3">produktifitas website</Atoms.Typo>
       <Atoms.Typo Variant={"h1"}>
@@ -35,10 +34,8 @@ const WelcomeContent = () => {
           </div>
         </div>
       </Atoms.Typo>
-      {/* images */}
 <div className="mt-15 w-full md:h-[270px] h-[200px] rounded-2xl relative">
   <div className="w-full md:h-[270px] h-[200px] rounded-2xl relative overflow-hidden">
-    {/* Marquee wrapper */}
     <div className="absolute bottom-5 flex animate-marquee z-20">
       <img
         className="select-none drag-none pointer-events-none mr-4 w-[400px] md:w-[700px]"
@@ -52,17 +49,13 @@ const WelcomeContent = () => {
         className="select-none drag-none pointer-events-none mr-4  w-[400px] md:w-[700px]"
         src="/images/achivment.png"
       />
-      {/* Bisa tambah duplikasi lagi biar terus menerus */}
     </div>
 
-    {/* Background tetap sama */}
     <img
       className="absolute select-none drag-none pointer-events-none w-full object-cover h-full z-10"
       src="/images/sawah.png"
     />
   </div>
-
-  {/* Character tetap sama */}
   <img
     className="z-30 max-w-[320px] md:max-w-[490px] select-none drag-none pointer-events-none absolute bottom-0 right-4"
     src="/images/character.png"

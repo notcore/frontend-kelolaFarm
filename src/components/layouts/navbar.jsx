@@ -60,19 +60,16 @@ export function Navbar() {
   if (loading) return null;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
+    <header className="sticky top-0 z-50 w-full border-b bg-background backdrop-blur">
       <div className="container flex h-16 items-center justify-between px-4 md:px-8">
-        {/* LOGO */}
         <Link to="/" className="flex items-center gap-2 font-bold text-xl">
           <Leaf className="h-7 w-7 text-green-600" strokeWidth={2.5} />
-          KelolaFarm
+          kelolaFarm
         </Link>
 
-        {/* DESKTOP MENU */}
         <div className="hidden md:flex items-center gap-4">
           <NavigationMenu>
             <NavigationMenuList>
-              {/* ABOUT */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger>About</NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -85,7 +82,7 @@ export function Navbar() {
                         >
                           <Leaf className="h-6 w-6 text-green-600 mb-2" />
                           <div className="mb-2 text-lg font-medium">
-                            KelolaFarm
+                            kelolaFarm
                           </div>
                           <p className="text-sm text-muted-foreground">
                             Website sederhana untuk membantu petani DIY.
@@ -94,18 +91,17 @@ export function Navbar() {
                       </NavigationMenuLink>
                     </li>
 
-                    <ListItem to="/funfact" title="Dibalik Layar">
-                      Dokumentasi proses dan sistem website.
+                    <ListItem to="https://github.com/notcore/frontend-kelolaFarm" title="frontend">
+                      source code frontend with fronted
                     </ListItem>
 
-                    <ListItem to="/project" title="Project Lainnya">
-                      Project sederhana by hyuma.dev
+                    <ListItem to="https://github.com/notcore/backend-kelolaFarm" title="backend">
+                      source code backend with laravel
                     </ListItem>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
-              {/* FITUR */}
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Fitur</NavigationMenuTrigger>
                 <NavigationMenuContent>
@@ -123,7 +119,6 @@ export function Navbar() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
-              {/* KONTAK (FIXED) */}
               <NavigationMenuItem>
                 <NavigationMenuLink
                   asChild
@@ -169,7 +164,7 @@ export function Navbar() {
               <DialogHeader>
                 <DialogTitle className="flex items-center gap-2">
                   <Leaf className="h-5 w-5 text-green-600" />
-                  <Atoms.Typo>Menu KelolaFarm</Atoms.Typo>
+                  <Atoms.Typo>Menu kelolaFarm</Atoms.Typo>
                 </DialogTitle>
               </DialogHeader>
 

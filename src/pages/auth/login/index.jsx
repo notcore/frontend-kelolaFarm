@@ -43,7 +43,7 @@ export default function Login() {
       <div className="flex justify-center mb-20 items-center w-full h-full">
         <form
           onSubmit={handleSubmit}
-          className="grid min-w-[350px] h-auto max-w-[500px] rounded-xl"
+          className="grid min-w-[350px] mb-40 h-auto max-w-[200px] rounded-xl"
         >
           <div className="my-5 mb-5">
             <Atoms.Typo Variant="h1">login</Atoms.Typo>
@@ -71,7 +71,7 @@ export default function Login() {
               Label="password"
               Name="password"
               Type="password"
-              Placeholder="tulis ulang password"
+              Placeholder="password"
               ClassName="mt-10"
               value={data.password}
               onChange={(e) => setData({ ...data, password: e.target.value })}
