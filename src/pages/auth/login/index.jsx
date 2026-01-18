@@ -3,6 +3,8 @@ import Layout from "@/components/layouts/";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { api } from "@/lib/api.jsx";
+import Lottie from "@/components/molecules/animate/lottie";
+import { useAuth } from "@/context/AuthProvider";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -10,6 +12,7 @@ export default function Login() {
     email: "",
     password: "",
   });
+  const { login } = useAuth();
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -21,7 +24,7 @@ export default function Login() {
 
     try {
       const response = await api.post("/login", data);
-
+      await login(response.data.token);
       localStorage.setItem("token", response.data.token);
       navigate("/");
     } catch (err) {
@@ -40,10 +43,11 @@ export default function Login() {
 
   return (
     <Layout>
-      <div className="flex justify-center mb-20 items-center w-full h-full">
+      <div className="flex justify-center mb-20 mx-10 items-center w-full h-full">
+      <div className="flex justify-center items-center mx-auto relative max-w-[80%] xl:max-w-[1000px]">
         <form
           onSubmit={handleSubmit}
-          className="grid min-w-[350px] mb-40 h-auto max-w-[200px] rounded-xl"
+          className="grid min-w-[350px] z-20 mb-40 h-auto lg:ml-0 -ml-20 max-w-[200px] rounded-xl xl:ml-30"
         >
           <div className="my-5 mb-5">
             <Atoms.Typo Variant="h1">login</Atoms.Typo>
@@ -90,9 +94,11 @@ export default function Login() {
             type="submit"
             disabled={loading}
           >
-            {loading ? "Loading..." : "login"}
+            {loading ? "memuat" : "login"}
           </Atoms.Button>
         </form>
+        <Lottie url="/animate/analisis.json" className="w-full h-full z-10 h-auto hidden -ml-20 -mt-30 lg:block"/>
+        </div>
       </div>
     </Layout>
   );

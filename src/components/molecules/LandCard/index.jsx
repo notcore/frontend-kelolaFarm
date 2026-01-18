@@ -13,7 +13,7 @@ const LandCard = ({ isNew, image, title, subtitle, meta, children }) => {
   
   if (isNew) {
     return (
-      <div className="w-60 h-full md:w-72 rounded-2xl border border-dashed border-gray-300 flex flex-col items-center justify-center cursor-pointer hover:border-green-400 hover:bg-green-50 transition-all duration-300 group flex-shrink-0">
+      <div className="w-60 h-full md:w-72 rounded-2xl border-4 border-dashed border-gray-300 flex flex-col items-center justify-center cursor-pointer hover:border-green-400 hover:bg-green-50 transition-all duration-300 group flex-shrink-0">
         <div className="bg-gray-200 rounded-full p-2 mb-2 group-hover:bg-green-200 transition-colors">
           <Plus size={24} className="text-gray-500 group-hover:text-green-700" />
         </div>
@@ -25,7 +25,7 @@ const LandCard = ({ isNew, image, title, subtitle, meta, children }) => {
   }
 
   return (
-    <Card className="w-60 md:w-72 flex-shrink-0 border-2 cursor-pointer transition-all duration-300 group">
+    <Card className="w-60 md:w-72 flex-shrink-0 border-2 border-slate-200 cursor-pointer transition-all duration-300 group">
       <div className="h-24 md:h-32 w-full overflow-hidden bg-gray-200 relative">
         {image ? (
           <img

@@ -9,8 +9,11 @@ import Register from "@/pages/auth/register";
 import Login from "@/pages/auth/login";
 import Home from "@/pages/Home";
 import Landing from "@/pages/index";
+import HargaTanaman from "@/pages/menu/harga-tanaman"
+
 import NoAuthRoute from "@/router/NoAuthRoute";
 import NoGuestRoute from "@/router/NoGuestRoute";
+
 
 import { AuthProvider } from "@/context/authProvider";
 
@@ -18,6 +21,7 @@ const Root = () => {
   return (
     <BrowserRouter>
       <Routes>
+         <Route path="/harga-tanaman" element={<HargaTanaman />} />
 
         <Route element={<NoAuthRoute />}>
           <Route path="/landing" element={<Landing />} />

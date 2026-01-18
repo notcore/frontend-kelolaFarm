@@ -7,7 +7,7 @@ const FeatureItem = ({ Icon, label }) => {
       <div className="w-14 h-14 md:w-16 md:h-16 bg-gray-100 rounded-2xl flex items-center justify-center text-gray-500 transition-all duration-300 shadow-sm border border-gray-50 group-hover:border-green-600">
         <Icon size={24} strokeWidth={1.5} />
       </div>
-      <Typo ClassName="text-center text-xs font-medium group-hover:text-green-700 transition-colors">
+      <Typo ClassName="text-center  group-hover:text-green-700 transition-colors">
         {label}
       </Typo>
     </div>

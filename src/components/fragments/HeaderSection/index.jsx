@@ -18,7 +18,7 @@ const HeaderSection = () => {
 
   return (
     <section className="relative mb-12">
-      <div className="h-48 md:h-64 w-full bg-gray-300 relative overflow-hidden md:rounded-b-[2rem]">
+      <div className="h-48 md:h-64 w-full bg-gray-300 relative overflow-hidden md:rounded-b-[2rem] rounded-b-[1rem]">
         <img 
           src="/images/rumah-kaca.jpg" 
           alt="Pemandangan" 
@@ -45,7 +45,7 @@ const HeaderSection = () => {
               logout();
               navigate("/");
             }}
-            className="w-9 h-9 flex items-center justify-center bg-gray-50 text-gray-500 rounded-xl hover:bg-green-100 hover:text-green-600 transition-colors"
+            className="w-9 h-9 flex items-center justify-center bg-gray-50 text-gray-500 hover:bg-green-100 hover:text-green-600 transition-colors"
           >
             <LogOut size={18} />
           </button>
