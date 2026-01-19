@@ -62,7 +62,7 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background">
       <div className="container flex h-16 items-center justify-between px-4 md:px-8">
-        <Link to="/" className="flex items-center gap-2 font-bold text-xl">
+        <Link to="/" className="flex md:ml-[5%] xl:ml-[3%] items-center gap-2 font-komerik text-xl">
           <Leaf className="h-7 w-7 text-green-600" strokeWidth={2.5} />
           kelolaFarm
         </Link>
@@ -81,7 +81,7 @@ export function Navbar() {
                           className="flex h-full w-full flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6"
                         >
                           <Leaf className="h-6 w-6 text-green-600 mb-2" />
-                          <div className="mb-2 text-lg font-medium">
+                          <div className="mb-2 text-lg font-komerik">
                             kelolaFarm
                           </div>
                           <p className="text-sm text-muted-foreground">

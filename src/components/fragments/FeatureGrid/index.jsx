@@ -34,11 +34,10 @@ const FeatureItem = ({ Icon, label, to }) => {
 const FeatureGrid = () => {
   const features = [
     { icon: CloudSun, to: "/cuaca", label: "Cuaca" },
-    { icon: Calculator, to: "/tanaman", label: "Prediksi bibit" },
     { icon: Sprout, to: "/tanah", label: "Cek Tanah" },
     { icon: TrendingUp, to: "/harga-tanaman", label: "Harga pasar" },
     { icon: ShoppingBasket, to: "/", label: "harga bibit" },
-    { icon: LayoutTemplate, to: "/create-lahan", label: "rancangan lahan" },
+    { icon: LayoutTemplate, to: "/lahan", label: "rancangan lahan" },
   ];
 
   return (
