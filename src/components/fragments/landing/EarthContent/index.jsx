@@ -37,7 +37,7 @@ const EarthContent = () => {
             <div className="flex w-full items-center">
               <div>
                 <Atoms.Typo Variant={"h2"}>Tanah Aluvial</Atoms.Typo>
-                <Atoms.Typo ClassName="">
+                <Atoms.Typo ClassName="text-sm">
                   Jagung, Padi, Kangung, Sawi
                 </Atoms.Typo>
               </div>

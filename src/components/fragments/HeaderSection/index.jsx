@@ -43,7 +43,7 @@ const HeaderSection = () => {
           <button
             onClick={() => {
               logout();
-              navigate("/");
+              navigate("/login");
             }}
             className="w-9 h-9 flex items-center justify-center bg-gray-50 text-gray-500 hover:bg-green-100 hover:text-green-600 transition-colors"
           >

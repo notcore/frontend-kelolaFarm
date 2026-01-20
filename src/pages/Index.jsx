@@ -14,12 +14,15 @@ function App() {
 
   return (
     <Layout>
+    <div className="xl:mx-[10%]">
       <Sections.WelcomeContent />
       <Sections.WheaterContent />
       <Sections.EarthContent />
       <Sections.PlanContent />
       <Sections.PriceContent />
       <Sections.TryContent />
+    </div>
+
       <div className="fixed rela bottom-10 group z-40 flex justify-center border items-center w-15 h-15 bg-white rounded-full right-5">
         <div className="relative">
           <Headset />

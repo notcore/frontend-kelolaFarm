@@ -1,6 +1,7 @@
 import React from "react";
 import Typo from "@/components/atoms/TypoGrafis";
 import Card from "@/components/atoms/Card";
+import { useNavigate } from "react-router-dom";
 import {
   Plus,
   Leaf,
@@ -10,17 +11,18 @@ import {
 } from "lucide-react";
 
 const LandCard = ({ isNew, image, title, subtitle, meta, children }) => {
-  
+const navigate = useNavigate();
+
   if (isNew) {
     return (
-      <div className="w-60 h-full md:w-72 rounded-2xl border-4 border-dashed border-gray-300 flex flex-col items-center justify-center cursor-pointer hover:border-green-400 hover:bg-green-50 transition-all duration-300 group flex-shrink-0">
+      <button onClick={() => {navigate('/buat-lahan')}} className="w-60 h-full md:w-72 rounded-2xl border-4 border-dashed border-gray-300 flex flex-col items-center justify-center cursor-pointer hover:border-green-400 hover:bg-green-50 transition-all duration-300 group flex-shrink-0">
         <div className="bg-gray-200 rounded-full p-2 mb-2 group-hover:bg-green-200 transition-colors">
           <Plus size={24} className="text-gray-500 group-hover:text-green-700" />
         </div>
         <Typo ClassName="text-xs font-medium text-gray-500 group-hover:text-green-700">
           Buat Baru
         </Typo>
-      </div>
+      </button>
     );
   }
 

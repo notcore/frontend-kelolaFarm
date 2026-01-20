@@ -37,7 +37,7 @@ const FeatureGrid = () => {
     { icon: Sprout, to: "/tanah", label: "Cek Tanah" },
     { icon: TrendingUp, to: "/harga-tanaman", label: "Harga pasar" },
     { icon: ShoppingBasket, to: "/", label: "harga bibit" },
-    { icon: LayoutTemplate, to: "/lahan", label: "rancangan lahan" },
+    { icon: LayoutTemplate, to: "/lahan", label: "schema lahan" },
   ];
 
   return (

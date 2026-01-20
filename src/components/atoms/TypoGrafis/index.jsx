@@ -11,7 +11,7 @@ const Typo = ({ Variant, children, ClassName="", ...props }) => {
   } else if (Variant == "h2") {
     return (
       <div
-        className={`scroll-m-20 text-xl font-helvetica-bold tracking-tight ${ClassName}`}
+        className={`scroll-m-20 text-xl font-komerik tracking-tight ${ClassName}`}
         {...props}
       >
         {children}
@@ -28,7 +28,7 @@ const Typo = ({ Variant, children, ClassName="", ...props }) => {
     );
   } else {
     return (
-      <div className={`leading-7 font-helvetica text-gray-900 ${ClassName}`} {...props}>
+      <div className={`max-w-2xl mt-2 text-slate-500 text-lg font-helvetica ${ClassName}`} {...props}>
         {children}
       </div>
     );

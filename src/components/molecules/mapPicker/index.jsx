@@ -3,11 +3,9 @@ import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-// Import asset marker bawaan leaflet agar muncul di layar
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
-// Inisialisasi icon default
 let DefaultIcon = L.icon({
   iconUrl: markerIcon,
   shadowUrl: markerShadow,
@@ -16,7 +14,6 @@ let DefaultIcon = L.icon({
 });
 L.Marker.prototype.options.icon = DefaultIcon;
 
-// Sub-komponen untuk menangani event klik pada peta
 const ClickHandler = ({ setPosition }) => {
   useMapEvents({
     click(e) {
@@ -28,12 +25,12 @@ const ClickHandler = ({ setPosition }) => {
 
 const MapPicker = ({ position, setPosition }) => {
   return (
-    <div className="bg-white p-3 rounded-[2.5rem] border border-slate-200 shadow-sm h-full flex flex-col min-h-[400px]">
+    <div className="bg-white p-3 h-full flex flex-col min-h-[400px]">
       <div className="w-full flex-1 rounded-[2rem] overflow-hidden z-0 border border-slate-100">
         <MapContainer 
           center={position} 
           zoom={13} 
-          zoomControl={false} // Menghilangkan tombol zoom in/out
+          zoomControl={false} 
           style={{ height: "100%", width: "100%" }}
         >
           <TileLayer 
@@ -45,16 +42,10 @@ const MapPicker = ({ position, setPosition }) => {
         </MapContainer>
       </div>
       
-      {/* Footer Peta untuk petunjuk user */}
       <div className="p-4 flex items-center justify-between">
-        <span className="text-sm text-slate-400 font-medium italic">
+        <span className="text-sm text-slate-400 font-helvetica">
           Klik pada area peta untuk menandai lokasi lahan
         </span>
-        <div className="flex gap-1">
-          <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
-          <div className="w-1.5 h-1.5 rounded-full bg-slate-200"></div>
-          <div className="w-1.5 h-1.5 rounded-full bg-slate-200"></div>
-        </div>
       </div>
     </div>
   );

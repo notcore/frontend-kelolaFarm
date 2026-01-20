@@ -27,11 +27,11 @@ const WheaterContent = () => {
       </div>
       <div className="mt-20 md:mt-10">
         <div className="absolute">
-          <div className="h-20 relative w-[300px] p-3 -left-5 -mt-10 rounded-xl border bg-white">
+          <div className="h-23 relative w-[300px] p-4 -left-5 -mt-10 rounded-xl border bg-white">
             <div className="flex w-full items-center">
               <div>
                 <Atoms.Typo Variant={"h2"}>cuaca hari ini hujan</Atoms.Typo>
-                <Atoms.Typo ClassName="">2 januari 2025</Atoms.Typo>
+                <Atoms.Typo ClassName="text-sm">2 januari 2025</Atoms.Typo>
               </div>
               <CloudRain size={50} className="text-blue-600 ml-auto" />
             </div>

@@ -14,7 +14,7 @@ import { showLahan, updateLahan } from "@/services/lahan";
 
 const STORAGE_URL = import.meta.env.VITE_STORAGE_BASE_URL;
 
-const uploadLahanPage = () => {
+const EditLahanPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ const uploadLahanPage = () => {
 
   const [formData, setFormData] = useState({
     nama_lahan: "",
-    luas_tanah: "", // State kamu pakai luas_tanah
+    luas_tanah: "",
     gambar_lahan: null,
     lokasi_lahan: "",
     tanaman_ids: [],
@@ -43,55 +43,47 @@ const uploadLahanPage = () => {
           gambar_lahan: null,
           lokasi_lahan: `${data.lat}, ${data.lon}`,
           tanaman_ids: data.tanaman ? data.tanaman.map((t) => t.id) : [],
-          tanah_id: data.tanah_id || 1, // Default ke 1 jika kosong
-          daerah_id: data.daerah_id || 1, // Default ke 1 jika kosong
+          tanah_id: data.tanah_id,
+          daerah_id: data.daerah_id,
         });
         setMapPos({ lat: parseFloat(data.lat), lng: parseFloat(data.lon) });
         setExistingImage(data.gambar_lahan);
         setFetching(false);
       })
       .catch(() => {
+        toast.error("Data tidak ditemukan");
         setFetching(false);
       });
   }, [id]);
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setLoading(true);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-  const data = new FormData();
-  // Ambil koordinat dari map, kasih default kalau user belum klik map
-  const coords = formData.lokasi_lahan || "-7.891205, 110.357666";
-  const [lat, lon] = coords.split(", ");
+    const data = new FormData();
+    const [lat, lon] = formData.lokasi_lahan.split(", ");
 
-  // ISI DATA SESUAI VALIDASI STORE DI CONTROLLER
-  data.append("nama_lahan", formData.nama_lahan);
-  data.append("luas", formData.luas_tanah); // Kirim 'luas', Laravel akan terima
-  data.append("lat", lat);
-  data.append("lon", lon);
-  data.append("tanah_id", formData.tanah_id || 1); 
-  data.append("daerah_id", formData.daerah_id || 1);
+    data.append("_method", "PUT");
+    data.append("nama_lahan", formData.nama_lahan);
+    data.append("luas", formData.luas_tanah);
+    data.append("lat", lat);
+    data.append("lon", lon);
+    data.append("tanah_id", formData.tanah_id);
+    data.append("daerah_id", formData.daerah_id);
 
-  if (formData.gambar_lahan) {
-    data.append("gambar_lahan", formData.gambar_lahan);
-  }
-
-  if (formData.tanaman_ids.length > 0) {
+    if (formData.gambar_lahan) data.append("gambar_lahan", formData.gambar_lahan);
     formData.tanaman_ids.forEach((id) => data.append("tanaman_ids[]", id));
-  }
 
-  try {
-    // PAKAI STORE, BUKAN UPDATE
-    await storeLahan(data); 
-    toast.success("Schema lahan berhasil dibuat!");
-    navigate("/menu/lahan");
-  } catch (err) {
-    console.error("Gagal Simpan:", err.response?.data?.errors);
-    toast.error("Gagal: " + Object.values(err.response?.data?.errors || {})[0]);
-  } finally {
-    setLoading(false);
-  }
-};
+    try {
+      await updateLahan(id, data);
+      toast.success("Lahan berhasil diupdate");
+      navigate("/menu/lahan");
+    } catch (err) {
+      toast.error("Gagal menyimpan data");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (fetching) {
     return (
@@ -106,11 +98,12 @@ const handleSubmit = async (e) => {
     <Layout>
       <main className="max-w-7xl mx-auto p-6 mt-20">
         <header className="mb-10">
-          <Typo Variant="h1">buat schema lahan</Typo>
-          <p className="text-slate-500">buat scema lahan anda.</p>
+          <Typo Variant="h1">Edit Lahan</Typo>
+          <p className="text-slate-500">Ubah informasi lahan dan titik lokasi tanaman Anda.</p>
         </header>
 
         <form onSubmit={handleSubmit} className="space-y-10">
+          {/* BARIS 1: NAMA & UPLOAD GAMBAR */}
           <div className="grid lg:grid-cols-2 gap-8 bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
             <div className="space-y-6">
               <Typo Variant="h2">Detail Informasi</Typo>
@@ -175,6 +168,7 @@ const handleSubmit = async (e) => {
             </div>
           </div>
 
+          {/* TOMBOL AKSI */}
           <div className="flex justify-end gap-4 pb-20">
             <Button
               type="button"
@@ -199,4 +193,4 @@ const handleSubmit = async (e) => {
   );
 };
 
-export default uploadLahanPage;
+export default EditLahanPage;

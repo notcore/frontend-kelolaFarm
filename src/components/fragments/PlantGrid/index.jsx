@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Sprout, Search } from "lucide-react";
 import Typo from "@/components/atoms/TypoGrafis";
 import Card from "@/components/atoms/Card"; 
 import SearchBar from "@/components/molecules/SearchBar";
@@ -18,12 +18,9 @@ const PlantGrid = ({ selectedIds = [], onSelect }) => {
   }, []);
 
   const handleToggleTanaman = (id) => {
-    // Cek apakah ID sudah ada di array
     if (selectedIds.includes(id)) {
-      // Jika ada, hapus (Deselect)
       onSelect(selectedIds.filter((item) => item !== id));
     } else {
-      // Jika tidak ada, tambah ke array (Select)
       onSelect([...selectedIds, id]);
     }
   };
@@ -32,54 +29,83 @@ const PlantGrid = ({ selectedIds = [], onSelect }) => {
     t.nama_tanaman?.toLowerCase().includes(search.toLowerCase())
   );
 
+  const storage = import.meta.env.VITE_STORAGE_BASE_URL;
+
   return (
     <div className="mt-12 space-y-8">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-slate-100 pb-6">
-        <div>
-          <Typo Variant="h2" ClassName="text-2xl text-slate-900">Pilih Komoditas</Typo>
-          <Typo ClassName="text-slate-500 text-sm mt-1">
-            Pilih satu atau lebih tanaman yang akan ditanam di lahan ini.
+      {/* Header & Search */}
+      <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-slate-100 pb-8">
+        <div className="space-y-1">
+          <Typo Variant="h2" ClassName="text-2xl font-bold tracking-tight text-slate-900">
+            Tanaman yang ditanam
+          </Typo>
+          <Typo ClassName="text-slate-500 text-sm max-w-md">
+            Pilih tanaman di lahan ini untuk mendapatkan analisis harga pasar yang akurat.
           </Typo>
         </div>
-        <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
+        <div className="w-full lg:w-72">
+          <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* Grid Container */}
+      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {loading ? (
-          [1, 2, 3, 4].map((i) => <div key={i} className="h-64 bg-slate-50 animate-pulse rounded-[2rem]" />)
+          [1, 2, 3, 4, 5, 6].map((i) => (
+            <div key={i} className="h-64 bg-slate-100 animate-pulse rounded-[1.5rem]" />
+          ))
         ) : (
           filtered.map((plant) => {
             const isActive = selectedIds.includes(plant.id);
             return (
-              <Card
+              <div
                 key={plant.id}
                 onClick={() => handleToggleTanaman(plant.id)}
-                className={`group cursor-pointer border-2 transition-all duration-300 overflow-hidden relative
+                className={`relative flex flex-col cursor-pointer rounded-[1.5rem] border-2 transition-colors duration-200 overflow-hidden
                   ${isActive 
-                    ? "border-green-600 bg-green-50 shadow-xl shadow-green-600/10 scale-[1.02]" 
-                    : "border-transparent hover:border-green-300"
+                    ? "border-green-600 bg-white" 
+                    : "border-slate-200 bg-white hover:border-slate-300"
                   }`}
               >
-                <div className="relative h-44 overflow-hidden -m-4 mb-2"> {/* -m-4 untuk offset padding default Card jika ada */}
+                {/* Image Section */}
+                <div className="relative h-40 bg-slate-50">
                   <img 
-                    src={plant.image} 
+                    src={storage + plant.gambar_tanaman} 
                     alt={plant.nama_tanaman} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                    className="w-full h-full object-cover" 
                   />
+                  
+                  {/* Status Overlay */}
+                  <div className={`absolute inset-0 transition-colors duration-200 
+                    ${isActive ? "bg-green-600/10" : "bg-transparent group-hover:bg-slate-900/5"}`} 
+                  />
+
                   {isActive && (
-                    <div className="absolute top-4 right-4 bg-white text-green-600 p-1.5 rounded-xl shadow-lg z-10">
-                      <CheckCircle2 size={20} fill="currentColor" className="text-white bg-green-600 rounded-full" />
+                    <div className="absolute top-3 right-3 bg-green-600 text-white p-1 rounded-lg">
+                      <CheckCircle2 size={18} />
                     </div>
                   )}
                 </div>
                 
-                <div className="py-2">
-                  <Typo ClassName="font-black text-lg text-slate-800">{plant.nama_tanaman}</Typo>
-                  <Typo ClassName="text-green-600 font-bold text-xs mt-1 uppercase">
-                    Masa Panen: {plant.masa_panen} Hari
-                  </Typo>
+                {/* Info Section */}
+                <div className="p-4 flex flex-col flex-grow">
+                  <div className="flex items-start justify-between gap-2">
+                    <Typo ClassName={`font-bold text-base leading-tight ${isActive ? "text-green-700" : "text-slate-800"}`}>
+                      {plant.nama_tanaman}
+                    </Typo>
+                  </div>
+                  
+                  <div className="mt-auto pt-3 flex items-center gap-2">
+                    <div className={`p-1.5 rounded-md ${isActive ? "bg-green-100 text-green-600" : "bg-slate-100 text-slate-500"}`}>
+                      <Sprout size={14} />
+                    </div>
+                    <Typo ClassName="text-xs font-helvetica">
+                      {plant.tanah?.jenis_tanah || "Semua Tanah"}
+                    </Typo>
+                  </div>
                 </div>
-              </Card>
+                {isActive && <div className="h-1.5 w-full bg-green-600" />}
+              </div>
             );
           })
         )}

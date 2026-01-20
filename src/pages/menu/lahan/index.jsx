@@ -54,7 +54,7 @@ const LahanPage = () => {
         <div className="xl:mx-20 mt-24 mb-10">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 px-5">
             <div className="space-y-1">
-              <Typo Variant="h2" ClassName="tracking-tight">Prototype Lahan Anda</Typo>
+              <Typo Variant="h1" ClassName="tracking-tight">schema Lahan Anda</Typo>
               <Typo Variant="body" ClassName="text-gray-500">
                 Pantau kondisi dan perkembangan lahan secara real-time.
               </Typo>

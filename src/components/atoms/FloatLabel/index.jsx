@@ -19,7 +19,7 @@ const FloatLabel = ({
 
   return (
     <div className={`relative mt-6 ${ClassName}`}>
-      <label className="absolute -top-3 bg-white px-2 left-3 z-10" htmlFor={Name}>
+      <label className="absolute -top-4 bg-white px-2 left-3 z-10" htmlFor={Name}>
         <Typo ClassName="font-bold text-sm">{Label}</Typo>
       </label>
 

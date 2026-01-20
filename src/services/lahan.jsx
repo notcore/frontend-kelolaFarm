@@ -1,4 +1,4 @@
-import {api} from "@/lib/api"
+import { api } from "@/lib/api"
 
 export const fetchLahan = async () => {
   try {
@@ -20,16 +20,6 @@ export const storeLahan = async (data) => {
   }
 };
 
-export const updateLahan = async (id, data) => {
-  try {
-    const res = await api.put(`/lahan/${id}`, data);
-    return res.data;
-  } catch (err) {
-    console.error("Update Lahan error:", err);
-    throw err;
-  }
-};
-
 export const deleteLahan = async (id) => {
   try {
     const res = await api.delete(`/lahan/${id}`);
@@ -38,4 +28,14 @@ export const deleteLahan = async (id) => {
     console.error("Delete Lahan error:", err);
     throw err;
   }
+};
+
+export const showLahan = async (id) => {
+  const res = await api.get(`/lahan/${id}`);
+  return res.data; 
+}
+
+export const updateLahan = async (data) => {
+  const res = await api.post(`/lahan`, data);
+  return res.data;
 };

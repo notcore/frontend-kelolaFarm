@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import "leaflet/dist/leaflet.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
-
+import { Toaster } from 'react-hot-toast';
 
 import Register from "@/pages/auth/register";
 import Login from "@/pages/auth/login";
