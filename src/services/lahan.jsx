@@ -1,41 +1,27 @@
-import { api } from "@/lib/api"
+import { api } from "@/lib/api";
 
-export const fetchLahan = async () => {
-  try {
-    const res = await api.get("/lahan");
-    return res.data;
-  } catch (err) {
-    console.error("Fetch lahan error:", err);
-    throw err; 
-  }
+export const fetchLahan = () => {
+  return api.get("/lahan");
 };
 
-export const storeLahan = async (data) => {
-  try {
-    const res = await api.post("/lahan", data);
-    return res.data;
-  } catch (err) {
-    console.error("Store Lahan error:", err);
-    throw err;
-  }
+export const storeLahan = (data) => {
+  return api.post("/lahan", data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 };
 
-export const deleteLahan = async (id) => {
-  try {
-    const res = await api.delete(`/lahan/${id}`);
-    return res.data;
-  } catch (err) {
-    console.error("Delete Lahan error:", err);
-    throw err;
-  }
+export const showLahan = (id) => {
+  return api.get(`/lahan/${id}`);
 };
 
-export const showLahan = async (id) => {
-  const res = await api.get(`/lahan/${id}`);
-  return res.data; 
-}
+export const updateLahan = (id, data) => {
+  data.append("_method", "PUT");
 
-export const updateLahan = async (data) => {
-  const res = await api.post(`/lahan`, data);
-  return res.data;
+  return api.post(`/lahan/${id}`, data, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
 };

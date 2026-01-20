@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import * as Atoms from "@/components/atoms";
-import { Menu, X, TrendingUp, Leaf, Sprout, Calculator, CloudSun, BadgeDollarSign } from "lucide-react";
+import { Menu, X, TrendingUp, Leaf, Sprout, LayoutTemplate, CloudSun, BadgeDollarSign } from "lucide-react";
 
 import { useAuth } from "@/context/authProvider";
 import { cn } from "@/lib/utils";
@@ -26,17 +26,17 @@ import {
 
 const features = [
   {
-    title: "Prediksi Bibit",
-    href: "/tanaman",
-    icon: <Calculator className="h-5 w-5 text-green-600" strokeWidth={2.5} />,
-    description: "Hitung perkiraan bibit yang dibutuhkan tanah anda.",
+    title: "schema lahan",
+    href: "/lahan",
+    icon: <LayoutTemplate className="h-5 w-5 text-green-600" strokeWidth={2.5} />,
+    description: "melihat suhu,cuaca dan harga tanaman anda tanpa alat.",
   },
-  {
-    title: "Jenis tanah",
-    href: "/tanah",
-    icon: <Sprout className="h-5 w-5 text-amber-600" strokeWidth={2.5} />,
-    description: "Lihat jenis tanah dibeberapa kabupaten.",
-  },
+  // {
+  //   title: "Jenis tanah",
+  //   href: "/tanah",
+  //   icon: <Sprout className="h-5 w-5 text-amber-600" strokeWidth={2.5} />,
+  //   description: "Lihat jenis tanah dibeberapa kabupaten.",
+  // },
   {
     title: "Info ",
     href: "/cuaca",
